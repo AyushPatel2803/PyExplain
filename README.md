@@ -76,18 +76,61 @@ pip install torch --index-url https://download.pytorch.org/whl/cu126
 pip install -r requirements.txt
 ```
 
-## Usage
+## How to use PyExplain (the explainer)
 
-```bash
-python collect_data.py     # 1. build the dataset
-python prepare_data.py     # 2. format + split
-python fine_tune.py        # 3. train the LoRA adapter -> output/
-python test_model.py       # 4. compare base vs fine-tuned
-python explain.py          # interactive explainer (or double-click PyExplain.bat on Windows)
+This is the main way to use the project — paste Python code and get an
+explanation back.
+
+**Launch it:**
+
+- **Windows:** double-click **`PyExplain.bat`**, or run:
+  ```bash
+  python explain.py
+  ```
+- **macOS / Linux:**
+  ```bash
+  python explain.py
+  ```
+
+**Then:**
+
+1. Wait for the model to load (a few seconds on CPU/small models; a couple of
+   minutes for a 7B in 4-bit). When you see **`Ready!`**, it's good to go.
+2. **Paste your Python code** (multi-line is fine — blank lines inside are kept).
+3. Type **`RUN`** on its own line and press Enter to get the explanation.
+4. Type **`CLEAR`** to discard what you pasted and start over, or **`quit`** to exit.
+
+**Example session:**
+
+```text
+--- Paste code, then type RUN. (CLEAR = start over, quit = exit) ---
+def average(nums):
+    return sum(nums) / len(nums)
+RUN
+
+EXPLANATION:
+This function calculates the average of a list of numbers. It takes one input,
+`nums` (a list of numbers), adds them all up with `sum(nums)`, counts how many
+there are with `len(nums)`, and divides the total by the count. So
+average([2, 4, 6]) gives 4.
 ```
 
-In the interactive tool: paste your code, type **`RUN`** to get the
-explanation, **`CLEAR`** to start over, **`quit`** to exit.
+> Tip: the model loads once at startup, so keep the window open and explain as
+> many snippets as you like in one session.
+
+## Train your own adapter (optional)
+
+To rebuild the dataset and fine-tune the model yourself, run the pipeline in
+order:
+
+```bash
+python collect_data.py     # 1. build the dataset of code -> explanation pairs
+python prepare_data.py     # 2. format into chat format + split train/validation
+python fine_tune.py        # 3. fine-tune with LoRA/QLoRA -> saves adapter to output/
+python test_model.py       # 4. compare the base model vs the fine-tuned model
+```
+
+Change the base model, paths, or hyper-parameters in **`config.py`**.
 
 ## Notes & limitations
 
