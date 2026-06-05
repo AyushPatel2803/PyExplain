@@ -1,0 +1,19 @@
+# PyExplain dependencies
+#
+# NOTE on PyTorch + GPU:
+# This project uses a CUDA build of PyTorch so it can run on an NVIDIA GPU.
+# Install torch FIRST, from the PyTorch index that matches your CUDA version,
+# e.g. for CUDA 12.6:
+#
+#   pip install torch --index-url https://download.pytorch.org/whl/cu126
+#
+# (Plain `pip install torch` installs the slower CPU-only build.)
+# Then install the rest below with: pip install -r requirements.txt
+
+transformers>=4.57
+peft>=0.17
+datasets>=4.5
+accelerate>=1.0
+bitsandbytes>=0.48   # 4-bit (QLoRA) quantization — GPU only
+numpy
+pandas
