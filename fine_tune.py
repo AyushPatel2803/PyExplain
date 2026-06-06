@@ -144,7 +144,6 @@ def main() -> None:
     # ---- Training ----
     args = TrainingArguments(
         output_dir=config.CHECKPOINT_DIR,
-        overwrite_output_dir=True,
         num_train_epochs=config.NUM_EPOCHS,
         per_device_train_batch_size=config.TRAIN_BATCH_SIZE,
         per_device_eval_batch_size=config.TRAIN_BATCH_SIZE,
