@@ -4,11 +4,14 @@
 &nbsp;[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 PyExplain is a small, self-contained project that **fine-tunes a code language
-model to explain Python code in plain, beginner-friendly English** — and runs
-**locally** on a consumer laptop GPU (no cloud, no API keys).
+model (Qwen2.5-Coder) with LoRA/QLoRA to explain Python code in plain,
+beginner-friendly English**. It uses open models and no paid APIs.
 
 You paste in a snippet of Python, and the model explains the overall purpose
 and then walks through the code part by part.
+
+The smaller 1.5B model was fine-tuned locally on a 6 GB laptop GPU; the 7B was
+fine-tuned on a free cloud GPU (Google Colab) and can run locally in 4-bit.
 
 🤗 **Fine-tuned model on Hugging Face:**
 [AyushPatel28/PyExplain-qwen-coder-7b](https://huggingface.co/AyushPatel28/PyExplain-qwen-coder-7b)
