@@ -61,7 +61,7 @@ hardware.
 The published model is the **7B**:
 [🤗 AyushPatel28/PyExplain-qwen-coder-7b](https://huggingface.co/AyushPatel28/PyExplain-qwen-coder-7b).
 To reproduce the 7B training yourself, open
-[`train_colab.ipynb`](train_colab.ipynb) in Google Colab.
+[`PyExplain.ipynb`](PyExplain.ipynb) in Google Colab.
 
 ## How it works (the pipeline)
 
