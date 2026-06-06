@@ -20,8 +20,8 @@ fine-tuned on a free cloud GPU (Google Colab) and can run locally in 4-bit.
 
 | | |
 |---|---|
-| **Live demo (7B)** — launches a public web link to try it | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AyushPatel2803/PyExplain/blob/main/demo_colab.ipynb) |
-| **Train the 7B yourself** (QLoRA) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AyushPatel2803/PyExplain/blob/main/PyExplain.ipynb) |
+| **PyExplain Live-Demo** — launches a public web link to try the 7B | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AyushPatel2803/PyExplain/blob/main/demo_colab.ipynb) |
+| **PyExplain** — train the 7B yourself (QLoRA) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AyushPatel2803/PyExplain/blob/main/PyExplain.ipynb) |
 
 > In Colab, set **Runtime → Change runtime type → T4 GPU** before running the cells.
 
