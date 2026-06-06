@@ -61,4 +61,12 @@ demo = gr.Interface(
 )
 
 if __name__ == "__main__":
-    demo.launch(share=True)
+    # quiet=True hides Gradio's default output (including the useless local URL);
+    # we then print ONLY the public share link, clearly.
+    _, _, public_url = demo.launch(share=True, quiet=True, prevent_thread_lock=True)
+    print("\n" + "=" * 64)
+    print("  PyExplain Live Demo is ready! Open this public link:")
+    print("  -> " + str(public_url))
+    print("=" * 64 + "\n")
+    demo.block_thread()  # keep the server running while you use the link
+
