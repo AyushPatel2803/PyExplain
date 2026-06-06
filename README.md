@@ -1,11 +1,17 @@
 # PyExplain — A Local AI That Explains Python Code
 
+[![Model on HF](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Qwen2.5--Coder--7B%20(LoRA)-yellow)](https://huggingface.co/AyushPatel28/PyExplain-qwen-coder-7b)
+&nbsp;[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 PyExplain is a small, self-contained project that **fine-tunes a code language
 model to explain Python code in plain, beginner-friendly English** — and runs
-entirely **locally** on a consumer laptop GPU (no cloud, no API keys).
+**locally** on a consumer laptop GPU (no cloud, no API keys).
 
 You paste in a snippet of Python, and the model explains the overall purpose
 and then walks through the code part by part.
+
+🤗 **Fine-tuned model on Hugging Face:**
+[AyushPatel28/PyExplain-qwen-coder-7b](https://huggingface.co/AyushPatel28/PyExplain-qwen-coder-7b)
 
 ```
 ==================================================
@@ -43,10 +49,16 @@ through the characters from end to start. So reverse("cat") gives "tac".
 
 ## Built on modest hardware
 
-Developed and trained on an **ASUS TUF FX505DU laptop**: NVIDIA GTX 1660 Ti
-(**6 GB VRAM**), Ryzen 7, ~14 GB RAM. The 7B model is loaded in **4-bit
-(QLoRA)** so it fits in 6 GB of video memory — a practical example of
-fine-tuning a 7B model on consumer hardware.
+Developed on an **ASUS TUF FX505DU laptop**: NVIDIA GTX 1660 Ti (**6 GB VRAM**),
+Ryzen 7, ~14 GB RAM. The 1.5B was fine-tuned locally; the **7B was fine-tuned
+with QLoRA on a free Google Colab GPU (Tesla T4)** and runs locally in 4-bit
+(~4.5 GB) — a practical example of training and running a 7B model on consumer
+hardware.
+
+The published model is the **7B**:
+[🤗 AyushPatel28/PyExplain-qwen-coder-7b](https://huggingface.co/AyushPatel28/PyExplain-qwen-coder-7b).
+To reproduce the 7B training yourself, open
+[`train_colab.ipynb`](train_colab.ipynb) in Google Colab.
 
 ## How it works (the pipeline)
 
