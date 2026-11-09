@@ -42,6 +42,105 @@ reverse), and returns it back-to-front. The `[::-1]` is a "slice" that walks
 through the characters from end to start. So reverse("cat") gives "tac".
 ```
 
+## Evaluation
+
+PyExplain was scored on 20 held-out beginner Python snippets (none in the
+training data), comparing the base Qwen2.5-Coder-7B-Instruct against the
+PyExplain adapter with the same system prompt and greedy decoding.
+
+| Metric | Base | PyExplain |
+|---|---:|---:|
+| Flesch Reading Ease (higher = easier) | 76.8 | **88.3** |
+| Jargon terms per answer | 5.4 | **0.2** |
+| Average length (words) | 157 | **58** |
+| Answers cut off at the token limit | 3 | **0** |
+
+PyExplain's answer was easier to read on **19/20** snippets and used less
+jargon on **19/20**.
+
+**Example: `for_squares`**
+
+```python
+for n in range(1, 6):
+    print(n, 'squared is', n * n)
+```
+
+<table>
+<tr><th>Base</th><th>PyExplain</th></tr>
+<tr valign="top"><td>
+
+This Python script prints out the squares of numbers from 1 to 5.
+
+Here's how it works:
+- `for n in range(1, 6):` This line starts a loop. It says "For each number `n`, starting at 1 and going up to but not including 6," do the stuff inside the loop.
+- `print(n, 'squared is', n * n)` Inside the loop, this line prints three things:
+  - The current number `n`
+  - The string `'squared is'`
+  - The square of `n` (which is calculated as `n * n`)
+
+</td><td>
+
+This prints squares of numbers from 1 to 5. The `range` makes a list [1,2,3,4,5]. The `for` loops over them. Each time, `n` gets next item. It prints `n`, says "squared is", then shows `n*n`. So it prints:
+```
+1 squared is 1
+2 squared is 4
+3 squared is 9
+4 squared is 16
+5 squared is 25
+```
+
+</td></tr>
+</table>
+
+**Example: `class_bank_account`**
+
+```python
+class BankAccount:
+    def __init__(self, owner):
+        self.owner = owner
+        self.balance = 0
+
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
+
+account = BankAccount('Maya')
+account.deposit(50)
+```
+
+<table>
+<tr><th>Base</th><th>PyExplain</th></tr>
+<tr valign="top"><td>
+
+This Python code defines a class called `BankAccount` which represents a bank account. A class is like a blueprint for creating objects.
+
+The `__init__` method initializes a new instance of the `BankAccount`. It sets up two attributes:
+- `owner`: The name of the person who owns the account.
+- `balance`: The current amount of money in the account, starting at zero.
+
+The `deposit` method allows you to put money into the account. When you call this method, you pass in how much money (`amount`) you want to deposit. Inside the method, it adds this amount to the balance using the `+=` operator, which is short for "add this amount to whatever is already there". Then, it returns the updated balance.
+
+Finally, the script creates an instance of `BankAccount`, naming it `account`, and assigns it to Maya. It then calls the `deposit` method on this account object, putting $50 into her account.
+
+</td><td>
+
+This creates a bank account where Maya owns it. The balance starts at zero. When she deposits money, her total goes up by whatever she puts in. So after putting $50 in, her new total would be $50. It's like having a piggy bank that adds coins inside whenever you put them in.
+
+</td></tr>
+</table>
+
+**Limitations.** These scores measure readability, not correctness. A manual
+review found 2 factual errors in PyExplain's answers: on `try_zero_division` it
+describes the wrong condition for the error (it says the error happens when
+nobody has paid, but it happens when the number of people is zero), and on
+`listcomp_filter` it includes 19 in the list of temperatures over 20 (the base
+model made the same mistake). Automatic correctness checking is future work.
+
+Full results: [results/eval_summary.md](results/eval_summary.md) (averages and
+per-snippet scores) and [results/eval_results.csv](results/eval_results.csv)
+(every answer and its scores). Reproduce with
+[`eval_colab.ipynb`](eval_colab.ipynb) or `python eval.py` on a CUDA GPU.
+
 ## What it does
 
 - Fine-tunes a code model with **LoRA / QLoRA** on a hand-written dataset of
