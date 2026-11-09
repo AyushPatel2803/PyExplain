@@ -19,12 +19,16 @@ import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from eval_snippets import get_snippet
+
 
 # Snippets the model has NOT been trained on, to test generalisation.
+# (The third one comes from the held-out eval set in eval_snippets.py; it used
+# to be an async-fetch snippet that was identical to a training example.)
 TEST_SNIPPETS = [
     "def is_palindrome(s):\n    s = s.lower()\n    return s == s[::-1]",
     "result = sorted(data, key=lambda item: item['age'], reverse=True)",
-    "async def fetch(url):\n    async with session.get(url) as resp:\n        return await resp.json()",
+    get_snippet("recursion_factorial"),
 ]
 
 
