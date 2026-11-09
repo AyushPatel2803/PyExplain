@@ -71,7 +71,7 @@ for n in range(1, 6):
 
 This Python script prints out the squares of numbers from 1 to 5.
 
-Here's how it works:
+Here’s how it works:
 - `for n in range(1, 6):` This line starts a loop. It says "For each number `n`, starting at 1 and going up to but not including 6," do the stuff inside the loop.
 - `print(n, 'squared is', n * n)` Inside the loop, this line prints three things:
   - The current number `n`
@@ -92,39 +92,42 @@ This prints squares of numbers from 1 to 5. The `range` makes a list [1,2,3,4,5]
 </td></tr>
 </table>
 
-**Example: `class_bank_account`**
+**Example: `dict_letter_count`**
 
 ```python
-class BankAccount:
-    def __init__(self, owner):
-        self.owner = owner
-        self.balance = 0
-
-    def deposit(self, amount):
-        self.balance += amount
-        return self.balance
-
-account = BankAccount('Maya')
-account.deposit(50)
+word = 'banana'
+counts = {}
+for letter in word:
+    counts[letter] = counts.get(letter, 0) + 1
+print(counts)
 ```
 
 <table>
 <tr><th>Base</th><th>PyExplain</th></tr>
 <tr valign="top"><td>
 
-This Python code defines a class called `BankAccount` which represents a bank account. A class is like a blueprint for creating objects.
+This Python script counts how many times each letter appears in the word "banana" and prints out those counts.
 
-The `__init__` method initializes a new instance of the `BankAccount`. It sets up two attributes:
-- `owner`: The name of the person who owns the account.
-- `balance`: The current amount of money in the account, starting at zero.
+Here’s how it works:
 
-The `deposit` method allows you to put money into the account. When you call this method, you pass in how much money (`amount`) you want to deposit. Inside the method, it adds this amount to the balance using the `+=` operator, which is short for "add this amount to whatever is already there". Then, it returns the updated balance.
+1. `word = 'banana'`: This sets up a variable called `word` which holds the string `'banana'`.
 
-Finally, the script creates an instance of `BankAccount`, naming it `account`, and assigns it to Maya. It then calls the `deposit` method on this account object, putting $50 into her account.
+2. `counts = {}`: This creates an empty dictionary named `counts`. A dictionary is like a special box where you can store key-value pairs. In this case, we'll use it to keep track of how many times each letter appears.
+
+3. `for letter in word:`: This starts a loop that goes through each character (or "letter") in the word `"banana"` one at a time. The variable `letter` will take on the value of each letter in turn.
+
+4. `counts[letter] = counts.get(letter, 0) + 1`: Inside the loop, this line updates our `counts` dictionary.
+   - `counts.get(letter, 0)` checks if there's already a count stored for the current `letter`. If not, it returns `0`.
+   - We then add `1` to whatever count was found (whether it was `0` or some other number).
+   - Finally, we assign this new count back into the `counts` dictionary under the corresponding `letter`.
+
+5. `print(counts)`: After the loop finishes, this line prints out the final `counts` dictionary, showing how many times each letter appeared in the word.
+
+So, after running this script, you would see `{ 'b': 1, 'a': 3, 'n': 2 }`, indicating that 'b' appears once, 'a' three times, and 'n' twice in the word "banana".
 
 </td><td>
 
-This creates a bank account where Maya owns it. The balance starts at zero. When she deposits money, her total goes up by whatever she puts in. So after putting $50 in, her new total would be $50. It's like having a piggy bank that adds coins inside whenever you put them in.
+This counts how many times each letter appears in "banana". It starts empty. For each letter, it looks up its count; if none yet, it gets zero. Then adds one. So at end, `{'b': 1, 'a': 3, 'n': 2}` shows b once, a three times, n twice.
 
 </td></tr>
 </table>
@@ -132,9 +135,12 @@ This creates a bank account where Maya owns it. The balance starts at zero. When
 **Limitations.** These scores measure readability, not correctness. A manual
 review found 2 factual errors in PyExplain's answers: on `try_zero_division` it
 describes the wrong condition for the error (it says the error happens when
-nobody has paid, but it happens when the number of people is zero), and on
-`listcomp_filter` it includes 19 in the list of temperatures over 20 (the base
-model made the same mistake). Automatic correctness checking is future work.
+nobody has paid and that at least two people are needed, but it only happens
+when the number of people is zero), and on `listcomp_filter` it includes 19 in
+the list of temperatures over 20 (the base model made the same mistake).
+Shorter answers also sometimes skip the part-by-part walkthrough, so some of
+the drop in length and jargon comes from leaving things out. Automatic
+correctness checking is future work.
 
 Full results: [results/eval_summary.md](results/eval_summary.md) (averages and
 per-snippet scores) and [results/eval_results.csv](results/eval_results.csv)
