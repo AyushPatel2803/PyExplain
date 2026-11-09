@@ -1,0 +1,570 @@
+snippet_id,topic,model,flesch_reading_ease,jargon_count,jargon_per_100_words,jargon_terms,word_count,new_tokens,hit_token_limit,code,answer
+for_squares,for loop,base,87.49,1,1.54,string(1),65,132,False,"for n in range(1, 6):
+    print(n, 'squared is', n * n)","This Python script prints out the squares of numbers from 1 to 5.
+
+Here’s how it works:
+- `for n in range(1, 6):` This line starts a loop. It says ""For each number `n`, starting at 1 and going up to but not including 6,"" do the stuff inside the loop.
+- `print(n, 'squared is', n * n)` Inside the loop, this line prints three things:
+  - The current number `n`
+  - The string `'squared is'`
+  - The square of `n` (which is calculated as `n * n`)"
+for_squares,for loop,fine_tuned,108.96,0,0.0,,37,105,False,"for n in range(1, 6):
+    print(n, 'squared is', n * n)","This prints squares of numbers from 1 to 5. The `range` makes a list [1,2,3,4,5]. The `for` loops over them. Each time, `n` gets next item. It prints `n`, says ""squared is"", then shows `n*n`. So it prints:
+```
+1 squared is 1
+2 squared is 4
+3 squared is 9
+4 squared is 16
+5 squared is 25
+```"
+while_countdown,while loop,base,88.76,0,0.0,,199,313,False,"steps = 10
+while steps > 0:
+    print('Steps left:', steps)
+    steps -= 2
+print('Done!')","This Python script counts down from 10 by subtracting 2 each time until there are no steps left.
+
+Here’s how it works:
+
+1. `steps = 10` - This sets up a variable called ""steps"" and assigns it the value 10. It's like having 10 steps to count down.
+   
+2. `while steps > 0:` - This starts a loop that will keep running as long as the ""steps"" variable is greater than 0. It's like saying, ""As long as we still have steps to count down, keep doing the next thing.""
+   
+3. `print('Steps left:', steps)` - Inside the loop, this prints out the current number of steps left. For example, first it might say ""Steps left: 10"", then ""Steps left: 8"", and so on.
+   
+4. `steps -= 2` - This decreases the ""steps"" variable by 2 each time the loop runs. It's like taking away two steps at a time.
+   
+5. After the loop ends because there are no more steps (`steps <= 0`), the program moves to the next line which says `print('Done!')`. This simply prints out ""Done!"" indicating that all steps have been counted down.
+
+So, in short, this script counts down from 10 by 2s until it reaches zero, printing out how many steps are left each time, and finally saying ""Done!"" when it's finished counting down."
+while_countdown,while loop,fine_tuned,92.78,0,0.0,,63,80,False,"steps = 10
+while steps > 0:
+    print('Steps left:', steps)
+    steps -= 2
+print('Done!')","This counts down from ten by twos until zero. It prints how many steps are left each time, then subtracts two. When there are no more steps, it says ""done"". The `while` checks if there are still steps before doing anything else. Each time around, it shows how many are left and reduces them by two. When none remain, it stops counting and ends."
+nested_loops,nested loops,base,73.17,2,1.98,expression(1); iterate(1),101,179,False,"for row in range(1, 4):
+    for col in range(1, 4):
+        print(row * col, end=' ')
+    print()","This Python script prints out a multiplication table.
+
+Here’s how it works:
+- The `for` loop outside (`row`) goes from 1 to 3.
+- For each iteration of the outer loop, the inner `for` loop (`col`) also goes from 1 to 3.
+- Inside these loops, the expression `row * col` calculates the product of the current values of `row` and `col`.
+- The `print()` function outputs this product followed by a space character (`end=' '`). This keeps all the products on the same line separated by spaces.
+- After completing the inner loop for all columns, the outer loop moves to the next row, printing a new line (`print()`) before starting over.
+
+So, the output will be:
+```
+1 2 3 
+2 4 6 
+3 6 9 
+```"
+nested_loops,nested loops,fine_tuned,83.21,0,0.0,,104,147,False,"for row in range(1, 4):
+    for col in range(1, 4):
+        print(row * col, end=' ')
+    print()","This prints a multiplication table from 1x1 up to 3x3.
+
+The outer `for` loop runs once per row. The inner `for` loop runs once per column within that row. So they together make a grid of rows and columns.
+
+Inside the loops, `row * col` calculates the product of the current row and column. That gets printed out. 
+
+The `end=' '` tells `print()` to put a space instead of a newline after printing each item. This keeps all the items on the same line.
+
+After finishing the inner loop for all columns, there's another `print()`. This puts a newline at the end of the row, moving down to start a new row below."
+listcomp_upper,list comprehension,base,81.7,5,6.41,comprehension(1); method(1); string(3),78,146,False,"cities = ['paris', 'tokyo', 'lima']
+loud = [city.upper() for city in cities]","This Python code creates two lists. The first list contains three city names: Paris, Tokyo, and Lima. The second list transforms these city names into all uppercase letters.
+
+Here’s how it works:
+1. `cities` is a list containing three strings: `'paris'`, `'tokyo'`, and `'lima'`.
+2. `[city.upper() for city in cities]` is a list comprehension. It goes through each item in the `cities` list and applies the `.upper()` method to convert each string to uppercase.
+3. The result is stored in the `loud` list, which will contain the strings `'PARIS'`, `'TOKYO'`, and `'LIMA'`."
+listcomp_upper,list comprehension,fine_tuned,78.77,0,0.0,,54,66,False,"cities = ['paris', 'tokyo', 'lima']
+loud = [city.upper() for city in cities]","This turns all the letters in the names into big letters. It goes through each name one at a time, changes them to big letters, and puts them together in a new list. So Paris becomes PARIS, Tokyo becomes TOKYO, Lima becomes LIMA. The new list has all the names written loud and clear!"
+listcomp_filter,list comprehension with condition,base,67.11,4,3.23,comprehension(1); iterate(3),124,238,False,"temps = [12, 25, 31, 8, 19]
+warm_days = [t for t in temps if t > 20]","This Python code creates two lists: `temps` and `warm_days`. The first list, `temps`, contains five temperature values. The second list, `warm_days`, will contain temperatures from the `temps` list that are warmer than 20 degrees.
+
+Here’s how the code works:
+- `[t for t in temps if t > 20]`: This is called a list comprehension. It's a way to create a new list by iterating over another list (`temps`) and including elements that meet a certain condition.
+  - `t for t in temps`: This part iterates over each element in the `temps` list. For each iteration, `t` represents the current element being looked at.
+  - `if t > 20`: This checks whether the current temperature (`t`) is greater than 20 degrees.
+  - Only if the condition is true, the temperature is added to the new list `warm_days`.
+
+So, after running this code, `warm_days` would be `[25, 31, 19]` because these are the temperatures from `temps` that are above 20 degrees."
+listcomp_filter,list comprehension with condition,fine_tuned,80.98,1,1.75,comprehension(1),57,97,False,"temps = [12, 25, 31, 8, 19]
+warm_days = [t for t in temps if t > 20]","This creates a new list `warm_days` from another list `temps`. It copies all the temperatures over 20 into the new list. The `[t for t in temps]` bit is called a ""list comprehension"". It loops over each temperature `t` in the original list, checks if it's greater than 20, and if so adds it to the new list. So warm_days will be [25, 31, 19]."
+dict_update_loop,dictionaries,base,76.83,1,0.62,index(1),160,298,False,"stock = {'apples': 5, 'pears': 0}
+stock['pears'] = 12
+for fruit, amount in stock.items():
+    print(fruit, amount)","This Python script manages a simple inventory system for fruits.
+
+Here’s how it works:
+1. `stock = {'apples': 5, 'pears': 0}` - This creates a dictionary named `stock`. A dictionary is like a list where instead of using numbers to index items, we use names (called keys). In this case, the keys are `'apples'` and `'pears'`, and their values are `5` and `0`, respectively. So, initially, there are 5 apples and 0 pears.
+   
+2. `stock['pears'] = 12` - This changes the value associated with the key `'pears'` from `0` to `12`. Now, there are 12 pears in the stock.
+
+3. `for fruit, amount in stock.items():` - This starts a loop that goes through all the items in the `stock` dictionary. For each item, it assigns the name of the fruit to the variable `fruit` and its quantity to the variable `amount`.
+
+4. `print(fruit, amount)` - Inside the loop, this prints out the name of the fruit and its current quantity. It repeats this for each fruit in the dictionary.
+
+So, when you run this script, it will output:
+```
+apples 5
+pears 12
+```
+
+This shows the updated quantities of apples and pears in the stock."
+dict_update_loop,dictionaries,fine_tuned,91.67,0,0.0,,98,119,False,"stock = {'apples': 5, 'pears': 0}
+stock['pears'] = 12
+for fruit, amount in stock.items():
+    print(fruit, amount)","This script keeps track of how many apples and pears we have. It starts with five apples and none of the other fruits. We change the pear count from zero to twelve. Then it prints out all our fruit counts. The first line sets up a dictionary called `stock` where each key is a type of fruit and its value is how many we have. The second changes the pear count. The third uses a loop to look at each item in the dictionary and print both the name and quantity. So it shows ""apples 5"" and ""pears 12""."
+dict_letter_count,dictionary counting,base,76.27,1,0.51,string(1),198,356,False,"word = 'banana'
+counts = {}
+for letter in word:
+    counts[letter] = counts.get(letter, 0) + 1
+print(counts)","This Python script counts how many times each letter appears in the word ""banana"" and prints out those counts.
+
+Here’s how it works:
+
+1. `word = 'banana'`: This sets up a variable called `word` which holds the string `'banana'`.
+
+2. `counts = {}`: This creates an empty dictionary named `counts`. A dictionary is like a special box where you can store key-value pairs. In this case, we'll use it to keep track of how many times each letter appears.
+
+3. `for letter in word:`: This starts a loop that goes through each character (or ""letter"") in the word `""banana""` one at a time. The variable `letter` will take on the value of each letter in turn.
+
+4. `counts[letter] = counts.get(letter, 0) + 1`: Inside the loop, this line updates our `counts` dictionary.
+   - `counts.get(letter, 0)` checks if there's already a count stored for the current `letter`. If not, it returns `0`.
+   - We then add `1` to whatever count was found (whether it was `0` or some other number).
+   - Finally, we assign this new count back into the `counts` dictionary under the corresponding `letter`.
+
+5. `print(counts)`: After the loop finishes, this line prints out the final `counts` dictionary, showing how many times each letter appeared in the word.
+
+So, after running this script, you would see `{ 'b': 1, 'a': 3, 'n': 2 }`, indicating that 'b' appears once, 'a' three times, and 'n' twice in the word ""banana""."
+dict_letter_count,dictionary counting,fine_tuned,97.4,0,0.0,,41,73,False,"word = 'banana'
+counts = {}
+for letter in word:
+    counts[letter] = counts.get(letter, 0) + 1
+print(counts)","This counts how many times each letter appears in ""banana"". It starts empty. For each letter, it looks up its count; if none yet, it gets zero. Then adds one. So at end, `{'b': 1, 'a': 3, 'n': 2}` shows b once, a three times, n twice."
+class_bank_account,classes and methods,base,71.49,12,8.7,attribute(1); initialize(1); instance(2); method(5); object(2); operator(1),138,200,False,"class BankAccount:
+    def __init__(self, owner):
+        self.owner = owner
+        self.balance = 0
+
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
+
+account = BankAccount('Maya')
+account.deposit(50)","This Python code defines a class called `BankAccount` which represents a bank account. A class is like a blueprint for creating objects.
+
+The `__init__` method initializes a new instance of the `BankAccount`. It sets up two attributes:
+- `owner`: The name of the person who owns the account.
+- `balance`: The current amount of money in the account, starting at zero.
+
+The `deposit` method allows you to put money into the account. When you call this method, you pass in how much money (`amount`) you want to deposit. Inside the method, it adds this amount to the balance using the `+=` operator, which is short for ""add this amount to whatever is already there"". Then, it returns the updated balance.
+
+Finally, the script creates an instance of `BankAccount`, naming it `account`, and assigns it to Maya. It then calls the `deposit` method on this account object, putting $50 into her account."
+class_bank_account,classes and methods,fine_tuned,81.15,0,0.0,,54,67,False,"class BankAccount:
+    def __init__(self, owner):
+        self.owner = owner
+        self.balance = 0
+
+    def deposit(self, amount):
+        self.balance += amount
+        return self.balance
+
+account = BankAccount('Maya')
+account.deposit(50)","This creates a bank account where Maya owns it. The balance starts at zero. When she deposits money, her total goes up by whatever she puts in. So after putting $50 in, her new total would be $50. It’s like having a piggy bank that adds coins inside whenever you put them in."
+class_str,class with __str__,base,69.89,27,12.92,constructor(2); initialize(1); instance(2); method(7); object(10); parameter(1); string(4),209,400,True,"class Book:
+    def __init__(self, title, pages):
+        self.title = title
+        self.pages = pages
+
+    def __str__(self):
+        return f'{self.title} ({self.pages} pages)'
+
+print(Book('Dune', 412))","This Python code defines a class called `Book` and creates an instance of that class.
+
+### What It Does
+The code defines a new type of object called `Book`. This object will have two properties: `title` and `pages`, and a method to represent the book as a string (`__str__`). Finally, it creates an instance of `Book` with the title ""Dune"" and 412 pages, and prints it out.
+
+### Explanation Line by Line
+
+#### Class Definition
+```python
+class Book:
+```
+- **Class**: A blueprint for creating objects. Think of it like a template.
+- **Book**: The name of our class. We're making a new kind of thing called `Book`.
+
+#### Constructor Method
+```python
+    def __init__(self, title, pages):
+```
+- **def**: Defines a new function/method.
+- **__init__**: Special method that runs when we create a new object from this class. It initializes the object.
+- **self**: Refers to the current object being created.
+- **title** and **pages**: Parameters passed to the constructor. These are values we provide when creating a new `Book` object.
+
+#### Setting Properties
+```python
+        self.title = title
+        self.pages = pages
+```
+- **self.title**: Sets the `title` property of the current `Book` object to whatever was provided.
+- **self.pages**: Sets the `pages` property of the current `Book` object to whatever was provided.
+
+#### String Representation Method
+```python
+    def __str__(self):
+```
+- **__str__**: Another special method. When we try to print an object, Python calls this method to know how to display it.
+
+#### Returning a String
+```python
+        return f'{self.title} ({self.pages} pages)'
+```
+- **return**: Sends back a value from the function.
+- **f-string**: A"
+class_str,class with __str__,fine_tuned,98.38,0,0.0,,109,144,False,"class Book:
+    def __init__(self, title, pages):
+        self.title = title
+        self.pages = pages
+
+    def __str__(self):
+        return f'{self.title} ({self.pages} pages)'
+
+print(Book('Dune', 412))","This creates a new kind of thing called `Book`. A book has two parts inside it - its name (`title`) and how many pages it has (`pages`). When we make a book, we tell it both of those things.
+
+The first line says ""make a new book"". The second line tells us what to call the book ('Dune') and how big it is (412 pages). 
+
+Then there’s a special bit at the bottom that shows us our brand-new book! It looks like this: Dune (412 pages)
+
+So now we know exactly what a book is, and how to make them. We’ve made a whole new type of thing, all from scratch!"
+try_zero_division,try/except,base,73.88,3,1.69,argument(1); exception(1); string(1),178,305,False,"def split_bill(total, people):
+    try:
+        return total / people
+    except ZeroDivisionError:
+        return 'Nobody to split with'","This Python code defines a function called `split_bill` that calculates how much each person should pay when splitting a bill.
+
+Here’s a breakdown of the code:
+
+1. **Function Definition**: 
+   ```python
+   def split_bill(total, people):
+   ```
+   This line tells Python we're defining a new function named `split_bill`. It takes two arguments: `total`, which is the amount of money to be split, and `people`, which is the number of people sharing the bill.
+
+2. **Try Block**:
+   ```python
+   try:
+       return total / people
+   ```
+   The `try` block attempts to execute the code inside it. In this case, it tries to divide the `total` by the `people`.
+
+3. **Exception Handling**:
+   ```python
+   except ZeroDivisionError:
+       return 'Nobody to split with'
+   ```
+   If there's an error during the execution of the `try` block, Python looks at the `except` blocks to see if they can handle the error. Here, it catches a `ZeroDivisionError`, which happens when you try to divide by zero. If such an error occurs, the function returns the string `'Nobody to split with'`.
+
+In summary, this function divides the total bill equally among the specified number of people. If you try to divide by zero (which would happen if there were no people to split the bill), it will tell you ""Nobody to split with"" instead of crashing."
+try_zero_division,try/except,fine_tuned,76.81,0,0.0,,68,77,False,"def split_bill(total, people):
+    try:
+        return total / people
+    except ZeroDivisionError:
+        return 'Nobody to split with'","This splits up a bill evenly among everyone. It divides how much was spent by how many people. But if nobody paid anything yet, it says there’s nothing to divide. So it stops from trying to divide by zero, which would crash the program. Instead it tells us nicely that we need at least two people before splitting will work. This way it handles mistakes without breaking."
+try_missing_file,try/except with files,base,80.75,4,2.27,exception(2); method(1); object(1),176,269,False,"try:
+    with open('notes.txt') as f:
+        print(f.read())
+except FileNotFoundError:
+    print('The file does not exist yet.')","This Python script reads from a text file named `notes.txt` and prints its contents to the screen.
+
+Here’s how it works:
+
+1. **Try Block**: The `try:` keyword starts a try block. This block contains code that might cause an error.
+   
+2. **Open File**: Inside the try block, `with open('notes.txt') as f:` tries to open a file called `notes.txt`. The `with` statement ensures that the file gets closed after we're done reading from it, even if there's an error. The variable `f` represents the file object.
+
+3. **Read File**: `print(f.read())` reads all the content from the file using the `read()` method and prints it out.
+
+4. **Except Block**: The `except FileNotFoundError:` keyword catches an exception if the file doesn't exist. An exception is an error that occurs during program execution.
+
+5. **Print Error Message**: If the file isn’t found, `print('The file does not exist yet.')` runs instead. It tells the user that the file they tried to read doesn’t exist.
+
+So, in simple terms, this script attempts to open and display the contents of a file named `notes.txt`. If the file doesn’t exist, it informs the user about it without crashing the program."
+try_missing_file,try/except with files,fine_tuned,83.09,1,1.59,exception(1),63,75,False,"try:
+    with open('notes.txt') as f:
+        print(f.read())
+except FileNotFoundError:
+    print('The file does not exist yet.')","This tries to read from a file called notes.txt. If it doesn't find it, it prints ""file not found"". The try lets it fail without crashing. The except catches the error and runs its code instead. So it handles errors gracefully. No need to know about files or exceptions here - just remember it tries something risky, then fixes problems if they happen."
+file_count_lines,file reading,base,84.09,3,1.91,increment(1); initialize(1); iterate(1),157,268,False,"line_count = 0
+with open('diary.txt') as f:
+    for line in f:
+        line_count += 1
+print(line_count)","This Python script counts how many lines are in a file named `diary.txt` and prints out the total count.
+
+Here’s a breakdown of the code:
+
+1. **`line_count = 0`**: This initializes a variable called `line_count`. It starts at zero because we haven't counted any lines yet.
+   
+2. **`with open('diary.txt') as f:`**: This opens the file named `diary.txt` and assigns its contents to a variable called `f`. The `with` statement ensures that the file gets closed after we're done reading from it, which is good practice.
+
+3. **`for line in f:`**: This loops over each line in the file `f`. Each iteration of the loop processes one line from the file.
+
+4. **`line_count += 1`**: Inside the loop, this increments the `line_count` variable by one. So, for each line read from the file, `line_count` goes up by one.
+
+5. **`print(line_count)`**: After the loop finishes, this prints out the final value of `line_count`, which is the total number of lines in the file.
+
+So, in simple terms, this script reads through all the lines in `diary.txt` and tells us how many there are!"
+file_count_lines,file reading,fine_tuned,100.18,0,0.0,,54,73,False,"line_count = 0
+with open('diary.txt') as f:
+    for line in f:
+        line_count += 1
+print(line_count)","This counts lines in a file. It opens diary.txt, reads it line by line, adds up how many there are, then prints total. The `open` command gets the file ready. The `for` loop goes through all its lines one at a time. Each time, it adds 1 to count. At end, it shows final tally."
+file_sum_numbers,file reading with conversion,base,78.78,7,3.3,exception(1); float(2); initialize(1); iterate(1); object(1); operator(1),212,347,False,"total = 0
+with open('numbers.txt') as f:
+    for line in f:
+        total += float(line.strip())
+print('Total:', total)","This Python script reads numbers from a file named `numbers.txt`, adds them up, and prints the total.
+
+Here’s how it works:
+
+1. **`total = 0`**: This initializes a variable called `total` to zero. It will be used to keep track of the sum of all the numbers read from the file.
+
+2. **`with open('numbers.txt') as f:`**: This opens a file named `numbers.txt`. The `with` statement ensures that the file is properly closed after its suite finishes, even if an exception is raised on the way. The `as f` part assigns the opened file object to the variable `f`.
+
+3. **`for line in f:`**: This starts a loop that goes through each line in the file one at a time. Each iteration of the loop processes one line from the file.
+
+4. **`line.strip()`**: Inside the loop, `line.strip()` removes any leading or trailing whitespace characters (like spaces or newline characters) from the current line.
+
+5. **`float(line.strip())`**: This converts the stripped line into a floating-point number. A floating-point number is a type of number that includes decimal points.
+
+6. **`total += float(line.strip())`**: This adds the converted number to the `total`. The `+=` operator is shorthand for `total = total + float(line.strip())`.
+
+7. **`print('Total:', total)`**: After the loop ends, this prints out the total sum of all the numbers in the file.
+
+So, in simple terms, the script reads lines from a file, turns those lines into numbers, adds them together, and finally tells you the total sum."
+file_sum_numbers,file reading with conversion,fine_tuned,87.81,0,0.0,,38,47,False,"total = 0
+with open('numbers.txt') as f:
+    for line in f:
+        total += float(line.strip())
+print('Total:', total)",This adds up all the numbers in a file called `numbers.txt`. It reads the whole file line by line. Each line is turned into a decimal number. All those decimals are added together. The final sum is printed out.
+recursion_factorial,recursion,base,65.18,4,2.58,integer(1); parameter(1); recursion(2),155,276,False,"def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)","This Python code defines a function called `factorial` that calculates the factorial of a given number `n`. The factorial of a number is the product of all positive integers less than or equal to that number.
+
+Here’s how the code works:
+
+1. **Function Definition**: 
+   ```python
+   def factorial(n):
+   ```
+   This line tells Python we're defining a new function named `factorial`. It takes one input parameter `n`, which is the number whose factorial we want to find.
+
+2. **Base Case**:
+   ```python
+   if n <= 1:
+       return 1
+   ```
+   This checks if `n` is less than or equal to 1. If true, it returns 1 because the factorial of 0 and 1 is 1.
+
+3. **Recursive Call**:
+   ```python
+   return n * factorial(n - 1)
+   ```
+   If `n` is greater than 1, the function calls itself again with `n-1`. This continues until `n` becomes 1. Each call multiplies `n` by the result of the recursive call with `n-1`.
+
+In essence, the function keeps calling itself with smaller values of `n` until it reaches 1, at which point it starts returning and multiplying those results together to compute the factorial."
+recursion_factorial,recursion,fine_tuned,68.43,1,2.94,recursion(1),34,44,False,"def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)","This calculates how many ways there are to arrange `n` items. It uses a special trick called ""recursion"" where the answer depends on smaller versions of itself. The base case stops it from going forever."
+recursion_sum_list,recursion on a list,base,82.11,1,0.44,recursion(1),225,400,True,"def total(items):
+    if not items:
+        return 0
+    return items[0] + total(items[1:])","This Python code defines a function named `total` that calculates the sum of all numbers in a list called `items`. Here’s how it works:
+
+1. **Function Definition**: The `def total(items):` line tells Python we're defining a new function called `total`. This function will take one input, which is a list of numbers.
+
+2. **Base Case Check**: The `if not items:` line checks if the list `items` is empty. If it is, the function returns `0`. This is important because if there are no numbers in the list, their sum should be zero.
+
+3. **Recursive Call**: The `return items[0] + total(items[1:])` line is where the magic happens. It adds up the first number in the list (`items[0]`) to whatever the `total` function returns when called with the rest of the list (`items[1:]`). 
+
+   - `items[0]` gets the first item from the list.
+   - `items[1:]` creates a new list that excludes the first item.
+   - The function calls itself again with this smaller list.
+
+4. **Summing Up**: Each time the function calls itself, it keeps adding the first number of the current list to the sum of the remaining numbers until the list is empty. At that point, it stops calling itself and starts returning the sums back up the chain.
+
+So, if you call `total([1, 2, 3])`, here’s what happens:
+- First call: `1 + total([2, 3])`
+- Second call: `2 + total([3])`
+- Third call: `3 + total([])`
+- Fourth call: Returns `0` (base case)
+- Third call returns `3`
+- Second call returns `5`
+- First call returns `6`
+
+The final result is `6`, which is the sum of `1`, `2`, and"
+recursion_sum_list,recursion on a list,fine_tuned,88.49,0,0.0,,47,54,False,"def total(items):
+    if not items:
+        return 0
+    return items[0] + total(items[1:])","This adds up all the numbers in a list. It looks at the first number, adds it to whatever comes from adding up the rest of the list. If there’s nothing left, it stops and says zero. This keeps calling itself over and over until done."
+str_replace_title,string methods,base,79.23,10,8.2,method(4); string(6),122,249,False,"headline = 'the quick brown fox'
+headline = headline.replace('quick', 'slow').title()
+print(headline)","This Python script changes some text and prints it out.
+
+Here’s how it works:
+1. `headline = 'the quick brown fox'` - This line creates a variable called `headline`. It stores the string `'the quick brown fox'` inside this variable.
+2. `headline = headline.replace('quick', 'slow')` - This line uses a method called `.replace()`. The `.replace()` method looks at the string stored in `headline` and replaces all occurrences of the word `'quick'` with the word `'slow'`. So now, `headline` contains the string `'the slow brown fox'`.
+3. `headline = headline.title()` - This line uses another method called `.title()`. The `.title()` method converts the first letter of each word in the string to uppercase, while making other letters lowercase. Now, `headline` contains the string `'The Slow Brown Fox'`.
+4. `print(headline)` - Finally, this line tells the computer to display whatever is currently stored in the `headline` variable. In this case, it will print out the string `'The Slow Brown Fox'`.
+
+So, the final output of this script is:
+```
+The Slow Brown Fox
+```"
+str_replace_title,string methods,fine_tuned,85.86,0,0.0,,25,37,False,"headline = 'the quick brown fox'
+headline = headline.replace('quick', 'slow').title()
+print(headline)","This changes ""the quick brown fox"" into ""The Slow Brown Fox"". The replace() function turns ""quick"" into ""slow"", and title() makes the first letter big."
+str_count_vowels,strings and loops,base,67.32,9,4.39,increment(1); initialize(1); method(1); parameter(1); string(5),205,397,False,"def count_vowels(text):
+    count = 0
+    for ch in text.lower():
+        if ch in 'aeiou':
+            count += 1
+    return count","This Python code defines a function called `count_vowels` that counts how many vowels are in a given string.
+
+Here’s a breakdown of the code:
+
+1. **Function Definition**: 
+   ```python
+   def count_vowels(text):
+   ```
+   This line tells Python we're defining a new function named `count_vowels`. It takes one input parameter called `text`, which should be a string (like ""hello world"").
+
+2. **Variable Initialization**:
+   ```python
+   count = 0
+   ```
+   Inside the function, we create a variable called `count` and set its initial value to 0. This variable will keep track of how many vowels we find in the text.
+
+3. **Loop Through Characters**:
+   ```python
+   for ch in text.lower():
+   ```
+   We start a loop that goes through each character in the `text` string. The `.lower()` method converts all characters in the string to lowercase letters. This ensures our vowel counting isn't case-sensitive (it works whether the letter is uppercase or lowercase).
+
+4. **Check for Vowel**:
+   ```python
+   if ch in 'aeiou':
+   ```
+   For each character (`ch`) in the string, we check if it is one of the vowels ('a', 'e', 'i', 'o', 'u').
+
+5. **Increment Count**:
+   ```python
+       count += 1
+   ```
+   If the character is a vowel, we increase the `count` variable by 1.
+
+6. **Return Result**:
+   ```python
+   return count
+   ```
+   After the loop finishes checking all characters, the function returns the total count of vowels found in the text.
+
+So, if you call `count_vowels(""Hello World"")`, it would return `3` because there are three vowels ('e', 'o', 'o') in ""Hello World""."
+str_count_vowels,strings and loops,fine_tuned,87.25,0,0.0,,37,44,False,"def count_vowels(text):
+    count = 0
+    for ch in text.lower():
+        if ch in 'aeiou':
+            count += 1
+    return count","This counts how many vowels there are in a word. It turns all letters into lowercase first. Then checks each letter; if it’s a vowel, adds one to the total. At end returns the final count."
+str_endswith,string methods with filtering,base,86.0,5,5.1,comprehension(1); method(2); string(2),98,189,False,"files = ['report.pdf', 'photo.jpg', 'resume.pdf']
+pdfs = [name for name in files if name.endswith('.pdf')]","This Python code filters out all the PDF files from a list of filenames.
+
+Here’s how it works:
+1. `files` is a list containing three strings: `'report.pdf'`, `'photo.jpg'`, and `'resume.pdf'`.
+2. The `[name for name in files if name.endswith('.pdf')]` part is called a list comprehension.
+   - It goes through each item (`name`) in the `files` list.
+   - For each item, it checks if the item ends with `.pdf` using the `endswith()` method.
+     - This method returns `True` if the string ends with the specified suffix, otherwise it returns `False`.
+   - If the condition is true, the item is added to a new list named `pdfs`.
+
+So, after running this code, `pdfs` will contain only the names of the PDF files: `['report.pdf', 'resume.pdf']`."
+str_endswith,string methods with filtering,fine_tuned,99.59,1,2.04,string(1),49,95,False,"files = ['report.pdf', 'photo.jpg', 'resume.pdf']
+pdfs = [name for name in files if name.endswith('.pdf')]","This creates a new list `pdfs` from another list `files`. It goes through all items in `files`, checks if they end with '.pdf'. If yes, adds them to `pdfs`. So `pdfs` ends up being `['report.pdf', 'resume.pdf']`. The square brackets `[ ]` make a new list. The word `if` says ""only if"". `.endswith()` checks if a string ends with certain letters."
+default_argument,function with default argument,base,67.87,6,2.97,argument(2); concatenate(1); parameter(1); string(2),202,400,True,"def welcome(name='friend', times=1):
+    for _ in range(times):
+        print('Welcome,', name)
+
+welcome()
+welcome('Lena', 2)","This Python script defines a function called `welcome` and uses it twice.
+
+### What the Code Does:
+The `welcome` function says ""Welcome"" to someone a certain number of times. By default, it welcomes them once, but you can specify both the person's name and how many times they should be welcomed.
+
+### Explanation of Each Part:
+
+#### Function Definition:
+```python
+def welcome(name='friend', times=1):
+```
+- **Function**: A block of code that performs a specific task.
+- **`welcome`**: The name of our function.
+- **Parameters** (`name`, `times`): Inputs that the function needs to work.
+  - **Default Values**: 
+    - `name='friend'`: If no name is given, it defaults to welcoming ""friend"".
+    - `times=1`: If no number is given, it defaults to welcoming once.
+
+#### Loop:
+```python
+    for _ in range(times):
+```
+- **Loop**: Repeats a block of code multiple times.
+- **`range(times)`**: Creates a sequence of numbers from 0 up to (but not including) `times`.
+- **`_`**: An underscore variable used when we don't need to know the exact values being counted.
+
+#### Print Statement:
+```python
+        print('Welcome,', name)
+```
+- **Print**: Outputs text to the screen.
+- **String Concatenation**: Combines strings together using commas.
+  - `'Welcome,' + name`: Joins ""Welcome,"" with whatever name was provided.
+
+#### Calling the Function:
+```python
+welcome()
+welcome('Lena', 2)
+```
+- **Calling a Function**: Using its name followed by parentheses to execute it.
+- **First Call**: Welcomes ""friend"" once because no arguments were given.
+- **Second Call**: Welcomes ""Lena"" two times because 'Lena' is passed as the first argument and 2 is passed as the"
+default_argument,function with default argument,fine_tuned,83.6,0,0.0,,72,87,False,"def welcome(name='friend', times=1):
+    for _ in range(times):
+        print('Welcome,', name)
+
+welcome()
+welcome('Lena', 2)","This defines a `welcome` function that prints ""Welcome,"" plus whatever name you put in. It also lets you tell it how many times to repeat it. The first call says hello once to a friend. The second calls it twice to Lena. You don't need to know anything about functions yet! Just remember they're blocks of code that let you reuse stuff without typing it over and over. This one repeats a greeting."
+list_methods,list methods,base,78.61,3,2.26,method(3),133,228,False,"shopping = ['milk', 'eggs']
+shopping.append('bread')
+shopping.remove('eggs')
+last = shopping.pop()
+print(shopping, last)","This Python script manages a list of items you need to buy at the store.
+
+1. `shopping = ['milk', 'eggs']` - This creates a new list called ""shopping"" and adds two items to it: milk and eggs.
+2. `shopping.append('bread')` - The `.append()` method adds a new item ('bread') to the end of the shopping list.
+3. `shopping.remove('eggs')` - The `.remove()` method removes the first occurrence of the specified item ('eggs') from the shopping list.
+4. `last = shopping.pop()` - The `.pop()` method removes and returns the last item from the shopping list. In this case, it removes bread because it was added most recently. The removed item ('bread') is stored in a variable called `last`.
+5. `print(shopping, last)` - Finally, the script prints out the updated shopping list and the item that was popped off (removed). So, it will print the remaining items in the list (`['milk']`) and the item that was taken out (`'bread'`)."
+list_methods,list methods,fine_tuned,90.94,0,0.0,,50,66,False,"shopping = ['milk', 'eggs']
+shopping.append('bread')
+shopping.remove('eggs')
+last = shopping.pop()
+print(shopping, last)","This adds bread to the list, removes eggs from it, and prints out the new list plus the removed item.
+
+The `append` command puts something at the end of a list.
+The `remove` command deletes the first thing matching its name.
+The `pop` command takes off the last thing added and returns it."
